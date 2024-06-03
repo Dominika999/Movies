@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% for movie in movies %}
+<p>
+Film: "{{ movie }}"
+</p>
+
+<style>p {color: green;}</style>
+<p>
+    Film: <b> "{{ movie.title }}" </b>
+    </p>
+
+    <p>
+        Film: "{{ movie.published_at }}"
+        </p>
+{% endfor %}
+{% endblock %}

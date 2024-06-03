@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja biblioteka filmów</title>
+</head>
+<body>
+
+    {% block nav %}
+    <a href="{% url 'hello_world' %}">Witaj świecie</a>
+    <a href="{% url 'list_movies' %}">Lista filmów</a>
+    {% if request.user.is_authenticated %}
+        <span>Zalogowano jako: {{ request.user.username }}</span>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <input type="submit" value="Wyloguj się">
+        </form>
+    {% else %}
+        <a href="{% url 'user_signup' %}">Zarejestruj się</a>
+        <a href="{% url 'login' %}">Zaloguj się</a>
+    {% endif %}
+{% endblock %}
+    <h1>
+        Witamy w filmotece!
+    </h1>
+{% block content %}
+    Tu będzie treść...
+{% endblock %}
+
+{% block footer %}
+    <p>Domyślna stopka</p>
+{% endblock %}
+
+</body>
+</html>
